@@ -15,20 +15,20 @@
     />
     <ion-card-header>
       <ion-card-title>Perfil</ion-card-title>
-      <ion-card-subtitle>tipo de usuario</ion-card-subtitle>
+      <ion-card-subtitle>{{ profile.role }}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      <h5>Nombre: {{}}</h5>
+      <h5>Nombre: {{ profile.name }}</h5>
       <hr />
-      <h5>Apellido: {{}}</h5>
+      <h5>Apellido: {{ profile.lastName }}</h5>
       <hr />
-      <h5>Fecha de Nacimiento: {{}}</h5>
+      <h5>Fecha de Nacimiento: {{ profile.birthDate }}</h5>
     </ion-card-content>
   </ion-card>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import {
   IonCard,
   IonCardContent,
@@ -51,24 +51,6 @@ import {
 } from "@ionic/vue";
 
 import { defineComponent } from "vue";
-
-export default defineComponent({
-  components: {
-    IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
-    IonHeader,
-    IonToolbar,
-    IonLabel,
-    IonInput,
-    IonItem,
-    IonList,
-    IonSelect,
-    IonSelectOption,
-  },
-});
 
 const profile = {
   name: "Diego",

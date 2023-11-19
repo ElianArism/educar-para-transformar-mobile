@@ -30,3 +30,9 @@ https://ionicframework.com/docs
 ### Componentes
 
 https://ionicframework.com/docs/components
+
+## Listas de alumno, Lista de horarios, Lista de aulas.
+
+Agregar horario, Actualizar, Asignar aula, Eliminar.
+cada lista un botón para actualizar y eliminar.
+filtrado por curso.

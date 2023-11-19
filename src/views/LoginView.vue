@@ -16,7 +16,6 @@
             type="password"
             required
             v-model="usuarios.password"
-            class="input-login-pw"
           ></ion-input>
           <ion-select
             class="ion-align-items-center"
@@ -64,7 +63,7 @@ import {
   IonSelectOption,
 } from "@ionic/vue";
 
-async function login(event) {
+async function login(event: any) {
   event.preventDefault();
 
   console.log(usuarios);
