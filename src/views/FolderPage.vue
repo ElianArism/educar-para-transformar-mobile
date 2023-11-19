@@ -5,10 +5,10 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>{{ $route.params.id }}</ion-title>
+        <!-- <ion-title>{{ $route.params.id }}</ion-title> -->
+        <ion-title>Educar para transformar</ion-title>
       </ion-toolbar>
     </ion-header>
-
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
@@ -18,14 +18,42 @@
 
       <div id="container">
         <strong class="capitalize">{{ $route.params.id }}</strong>
-        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <p>
+          Explore
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://ionicframework.com/docs/components"
+            >UI Components</a
+          >
+        </p>
       </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import {
+  IonButton,
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonLabel,
+  IonInput,
+  IonItem,
+  IonList,
+  IonSelect,
+  IonSelectOption,
+} from "@ionic/vue";
+
+const usuarios = {
+  name: "",
+  password: "",
+  role: "",
+};
 </script>
 
 <style scoped>
@@ -52,5 +80,13 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 
 #container a {
   text-decoration: none;
+}
+form {
+  background: rgb(87, 184, 248);
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 200px;
 }
 </style>
