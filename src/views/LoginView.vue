@@ -50,15 +50,9 @@
 import {
   IonButton,
   IonContent,
-  IonHeader,
-  IonMenuButton,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonLabel,
   IonInput,
-  IonItem,
-  IonList,
+  IonLabel,
+  IonPage,
   IonSelect,
   IonSelectOption,
 } from "@ionic/vue";
