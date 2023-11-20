@@ -62,18 +62,30 @@ import {
   IonSelect,
   IonSelectOption,
 } from "@ionic/vue";
+import { Method } from "ionicons/dist/types/stencil-public-runtime";
+import { ref } from "vue";
 
 async function login(event: any) {
   event.preventDefault();
-
-  console.log(usuarios);
+  try {
+    fetch("url", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(usuarios.value),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error: ", error));
+  } catch (error) {
+    console.log("Error", error);
+  }
 }
 
-const usuarios = {
+const usuarios = ref({
   name: "",
   password: "",
   role: "",
-};
+});
 </script>
 
 <style scoped>

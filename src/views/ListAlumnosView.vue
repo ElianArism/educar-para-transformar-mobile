@@ -75,8 +75,9 @@ import {
   IonGrid,
   IonRow,
 } from "@ionic/vue";
+import { ref } from "vue";
 import { RouterLink } from "vue-router";
-const alumnos = [
+const alumnos = ref([
   {
     name: "Dieguin",
     lastName: "Barrios",
@@ -98,7 +99,16 @@ const alumnos = [
     role: "Alumno",
     dni: "1234567",
   },
-];
+]);
+// export default {
+//   setup() {
+//     fetch("peticion get")
+//       .then((response) => response.json())
+//       .then((data: any) => (alumnos.value = data));
+
+//     return { data };
+//   },
+// };
 </script>
 
 <style scoped>
