@@ -1,72 +1,69 @@
-import { IonCol, IonGrid } from '@ionic/vue';
 <template>
-  <ion-header :translucent="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button color="primary"> </ion-menu-button>
-      </ion-buttons>
-      <ion-title>Tablas de Aulas</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <div class="pagina">
-    <ion-select
-      label="Filtrar por Materia"
-      label-placement="floating"
-      fill="outline"
-      class="select-materia"
-    >
-      <ion-select-option value="Matematica"
-        >Matematica</ion-select-option
+  <ion-page>
+    <ion-header :translucent="true">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button color="primary"> </ion-menu-button>
+        </ion-buttons>
+        <ion-title>Tablas de Aulas</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="pagina">
+      <ion-select
+        label="Filtrar por Materia"
+        label-placement="floating"
+        fill="outline"
+        class="select-materia"
       >
-      <ion-select-option value="Fisica I">Fisica I</ion-select-option>
-      <ion-select-option value="Programacion I"
-        >Programacion I</ion-select-option
-      >
-      <ion-select-option value="Programacion II"
-        >Programacion II</ion-select-option
-      >
-      <ion-select-option value="Metodologia de Sistemas"
-        >Metodologia de Sistemas</ion-select-option
-      >
-      <ion-select-option value="Estadistica"
-        >Estadistica</ion-select-option
-      >
-    </ion-select>
-    <ion-grid :fixed="true">
-      <h2>Tabla de Aulas</h2>
-      <ion-row class="header-list">
-        <ion-col size="4">Aula</ion-col>
-        <ion-col size="4">Materia</ion-col>
-        <ion-col size="4">Horario</ion-col>
-      </ion-row>
-      <ion-row v-for="clase in clases">
-        <ion-col size="4">{{ clase.nameClase }}</ion-col>
-        <ion-col size="4">{{ clase.nameMateria }}</ion-col>
-        <ion-col size="4">{{ clase.horario }}</ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+        <ion-select-option value="Matematica"
+          >Matematica</ion-select-option
+        >
+        <ion-select-option value="Fisica I"
+          >Fisica I</ion-select-option
+        >
+        <ion-select-option value="Programacion I"
+          >Programacion I</ion-select-option
+        >
+        <ion-select-option value="Programacion II"
+          >Programacion II</ion-select-option
+        >
+        <ion-select-option value="Metodologia de Sistemas"
+          >Metodologia de Sistemas</ion-select-option
+        >
+        <ion-select-option value="Estadistica"
+          >Estadistica</ion-select-option
+        >
+      </ion-select>
+      <ion-grid :fixed="true">
+        <h2>Tabla de Aulas</h2>
+        <ion-row class="header-list">
+          <ion-col size="4">Aula</ion-col>
+          <ion-col size="4">Materia</ion-col>
+          <ion-col size="4">Horario</ion-col>
+        </ion-row>
+        <ion-row v-for="clase in clases">
+          <ion-col size="4">{{ clase.nameClase }}</ion-col>
+          <ion-col size="4">{{ clase.nameMateria }}</ion-col>
+          <ion-col size="4">{{ clase.horario }}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ion-page>
 </template>
 <script lang="ts" setup>
 import {
-  IonButton,
-  IonSearchbar,
+  IonButtons,
+  IonCol,
   IonContent,
+  IonGrid,
   IonHeader,
   IonMenuButton,
-  IonButtons,
   IonPage,
-  IonTitle,
-  IonToolbar,
-  IonLabel,
-  IonInput,
-  IonItem,
-  IonList,
+  IonRow,
   IonSelect,
   IonSelectOption,
-  IonCol,
-  IonGrid,
-  IonRow,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/vue";
 const clases = [
   {

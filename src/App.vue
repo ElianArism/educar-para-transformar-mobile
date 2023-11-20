@@ -7,15 +7,11 @@
             <ion-list-header>Educar para transformar</ion-list-header>
             <ion-note>App movil MadielDevs</ion-note>
 
-            <ion-menu-toggle
-              :auto-hide="false"
-              v-for="(p, i) in appPages"
-              :key="i"
-            >
+            <ion-menu-toggle :auto-hide="false">
               <ion-item
-                @click="selectedIndex = i"
-                router-direction="root"
-                :router-link="p.url"
+                v-for="(p, i) in appPages"
+                :key="i"
+                @click="changeView(i)"
                 lines="none"
                 :detail="false"
                 class="hydrated"
@@ -28,6 +24,15 @@
                   :md="p.mdIcon"
                 ></ion-icon>
                 <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon
+                  aria-hidden="true"
+                  slot="start"
+                  :ios="exitOutline"
+                  :md="exitOutline"
+                ></ion-icon>
+                <ion-label>Salir</ion-label>
               </ion-item>
             </ion-menu-toggle>
           </ion-list>
@@ -53,28 +58,16 @@ import {
   IonRouterOutlet,
   IonSplitPane,
 } from "@ionic/vue";
-import { ref } from "vue";
-import router from "./router/index";
 import {
-  archiveOutline,
-  archiveSharp,
-  bookmarkOutline,
-  bookmarkSharp,
-  heartOutline,
-  heartSharp,
-  mailOutline,
-  mailSharp,
-  paperPlaneOutline,
-  paperPlaneSharp,
-  trashOutline,
-  trashSharp,
-  warningOutline,
-  warningSharp,
+  colorPaletteOutline,
+  exitOutline,
   personCircleOutline,
   readerOutline,
-  exitOutline,
-  colorPaletteOutline,
 } from "ionicons/icons";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const selectedIndex = ref(0);
 const appPages = [
@@ -102,20 +95,12 @@ const appPages = [
     iosIcon: colorPaletteOutline,
     mdIcon: colorPaletteOutline,
   },
-  {
-    title: "Salir",
-    url: "/folder/Spam",
-    iosIcon: exitOutline,
-    mdIcon: exitOutline,
-  },
 ];
 
-const path = window.location.pathname.split("folder/")[1];
-if (path !== undefined) {
-  selectedIndex.value = appPages.findIndex(
-    (page) => page.title.toLowerCase() === path.toLowerCase()
-  );
-}
+const changeView = (i: number) => {
+  selectedIndex.value = i;
+  router.push(appPages[i].url);
+};
 </script>
 
 <style scoped>
