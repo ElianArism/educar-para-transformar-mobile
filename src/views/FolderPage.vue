@@ -47,6 +47,7 @@ import {
   IonList,
   IonSelect,
   IonSelectOption,
+  IonButtons,
 } from "@ionic/vue";
 
 const usuarios = {

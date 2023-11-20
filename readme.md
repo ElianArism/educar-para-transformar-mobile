@@ -36,3 +36,7 @@ https://ionicframework.com/docs/components
 Agregar horario, Actualizar, Asignar aula, Eliminar.
 cada lista un botón para actualizar y eliminar.
 filtrado por curso.
+formulario con tres campos:
+1 campo dni del alumno solo lectura.
+2 campo listado de materias.
+3 campo horario.

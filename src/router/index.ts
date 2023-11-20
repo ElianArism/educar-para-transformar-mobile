@@ -2,6 +2,10 @@ import { createRouter, createWebHistory } from "@ionic/vue-router";
 import { RouteRecordRaw } from "vue-router";
 import Paglogin from "@/views/LoginView.vue";
 import Perfil from "@/views/PerfilView.vue";
+import ListAlumnos from "@/views/ListAlumnosView.vue";
+import ListAulas from "@/views/ListAulasView.vue";
+import Paletas from "@/views/PaletasView.vue";
+import AsignacionAulas from "@/views/AsignarAulasView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,6 +25,26 @@ const routes: Array<RouteRecordRaw> = [
     path: "/profile",
     name: "profile",
     component: Perfil,
+  },
+  {
+    path: "/listAlumnos",
+    name: "ListAlumnos",
+    component: ListAlumnos,
+  },
+  {
+    path: "/listAulas",
+    name: "listAulas",
+    component: ListAulas,
+  },
+  {
+    path: "/paletas",
+    name: "paletas",
+    component: Paletas,
+  },
+  {
+    path: "/asignacion",
+    name: "asignacion",
+    component: AsignacionAulas,
   },
 ];
 

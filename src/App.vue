@@ -5,7 +5,7 @@
         <ion-content>
           <ion-list id="inbox-list">
             <ion-list-header>Educar para transformar</ion-list-header>
-            <ion-note>hi@ionicframework.com</ion-note>
+            <ion-note>App movil MadielDevs</ion-note>
 
             <ion-menu-toggle
               :auto-hide="false"
@@ -30,24 +30,6 @@
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
             </ion-menu-toggle>
-          </ion-list>
-
-          <ion-list id="labels-list">
-            <ion-list-header>Labels</ion-list-header>
-
-            <ion-item
-              v-for="(label, index) in labels"
-              lines="none"
-              :key="index"
-            >
-              <ion-icon
-                aria-hidden="true"
-                slot="start"
-                :ios="bookmarkOutline"
-                :md="bookmarkSharp"
-              ></ion-icon>
-              <ion-label>{{ label }}</ion-label>
-            </ion-item>
           </ion-list>
         </ion-content>
       </ion-menu>
@@ -88,54 +70,44 @@ import {
   trashSharp,
   warningOutline,
   warningSharp,
+  personCircleOutline,
+  readerOutline,
+  exitOutline,
+  colorPaletteOutline,
 } from "ionicons/icons";
 
 const selectedIndex = ref(0);
 const appPages = [
   {
-    title: "Inbox",
-    url: "/folder/Inbox",
-    iosIcon: mailOutline,
-    mdIcon: mailSharp,
+    title: "Perfil",
+    url: "/profile",
+    iosIcon: personCircleOutline,
+    mdIcon: personCircleOutline,
   },
   {
-    title: "Outbox",
-    url: "/folder/Outbox",
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp,
+    title: "Lista Alumnos",
+    url: "/listAlumnos",
+    iosIcon: readerOutline,
+    mdIcon: readerOutline,
   },
   {
-    title: "Login",
-    url: "/folder/Favorites",
-    iosIcon: heartOutline,
-    mdIcon: heartSharp,
+    title: "Lista Aulas",
+    url: "/listAulas",
+    iosIcon: readerOutline,
+    mdIcon: readerOutline,
   },
   {
-    title: "Archived",
-    url: "/folder/Archived",
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp,
+    title: "Estilos",
+    url: "/paletas",
+    iosIcon: colorPaletteOutline,
+    mdIcon: colorPaletteOutline,
   },
   {
-    title: "Trash",
-    url: "/folder/Trash",
-    iosIcon: trashOutline,
-    mdIcon: trashSharp,
-  },
-  {
-    title: "Spam",
+    title: "Salir",
     url: "/folder/Spam",
-    iosIcon: warningOutline,
-    mdIcon: warningSharp,
+    iosIcon: exitOutline,
+    mdIcon: exitOutline,
   },
-];
-const labels = [
-  "Family",
-  "Friends",
-  "Notes",
-  "Work",
-  "Travel",
-  "Reminders",
 ];
 
 const path = window.location.pathname.split("folder/")[1];

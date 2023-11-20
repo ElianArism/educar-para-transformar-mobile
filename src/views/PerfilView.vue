@@ -8,24 +8,26 @@
       <ion-title>Perfil</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-card class="profile">
-    <img
-      alt="Silhouette of mountains"
-      src="../../resources/Perfil.jpg"
-    />
-    <ion-card-header>
-      <ion-card-title>Perfil</ion-card-title>
-      <ion-card-subtitle>{{ profile.role }}</ion-card-subtitle>
-    </ion-card-header>
+  <div class="contenedor">
+    <ion-card class="profile">
+      <img
+        alt="Silhouette of mountains"
+        src="../../resources/Perfil.jpg"
+      />
+      <ion-card-header>
+        <ion-card-title>Perfil</ion-card-title>
+        <ion-card-subtitle>{{ profile.role }}</ion-card-subtitle>
+      </ion-card-header>
 
-    <ion-card-content>
-      <h5>Nombre: {{ profile.name }}</h5>
-      <hr />
-      <h5>Apellido: {{ profile.lastName }}</h5>
-      <hr />
-      <h5>Fecha de Nacimiento: {{ profile.birthDate }}</h5>
-    </ion-card-content>
-  </ion-card>
+      <ion-card-content>
+        <h5>Nombre: {{ profile.name }}</h5>
+        <hr />
+        <h5>Apellido: {{ profile.lastName }}</h5>
+        <hr />
+        <h5>Fecha de Nacimiento: {{ profile.birthDate }}</h5>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -39,6 +41,7 @@ import {
   IonButton,
   IonContent,
   IonMenuButton,
+  IonButtons,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -61,8 +64,11 @@ const profile = {
 console.log(profile);
 </script>
 <style scoped>
+.contenedor {
+  padding: 10px;
+}
 .profile {
-  width: 400px;
+  width: 300px;
   margin: auto;
   margin-top: 150px;
   border-radius: 10px;
