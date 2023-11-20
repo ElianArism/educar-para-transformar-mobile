@@ -34,20 +34,13 @@
 
 <script setup lang="ts">
 import {
-  IonButton,
+  IonButtons,
   IonContent,
   IonHeader,
   IonMenuButton,
   IonPage,
   IonTitle,
   IonToolbar,
-  IonLabel,
-  IonInput,
-  IonItem,
-  IonList,
-  IonSelect,
-  IonSelectOption,
-  IonButtons,
 } from "@ionic/vue";
 
 const usuarios = {

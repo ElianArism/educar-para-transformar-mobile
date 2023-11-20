@@ -1,59 +1,51 @@
 <template>
-  <ion-header :translucent="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button color="primary"></ion-menu-button>
-      </ion-buttons>
-      <!-- <ion-title>{{ $route.params.id }}</ion-title> -->
-      <ion-title>Perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <div class="contenedor">
-    <ion-card class="profile">
-      <img
-        alt="Silhouette of mountains"
-        src="../../resources/Perfil.jpg"
-      />
-      <ion-card-header>
-        <ion-card-title>Perfil</ion-card-title>
-        <ion-card-subtitle>{{ profile.role }}</ion-card-subtitle>
-      </ion-card-header>
+  <ion-page>
+    <ion-header :translucent="true">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button color="primary"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Perfil</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="contenedor">
+      <ion-card class="profile">
+        <img
+          alt="Silhouette of mountains"
+          src="../../resources/Perfil.jpg"
+        />
+        <ion-card-header>
+          <ion-card-title>Perfil</ion-card-title>
+          <ion-card-subtitle>{{ profile.role }}</ion-card-subtitle>
+        </ion-card-header>
 
-      <ion-card-content>
-        <h5>Nombre: {{ profile.name }}</h5>
-        <hr />
-        <h5>Apellido: {{ profile.lastName }}</h5>
-        <hr />
-        <h5>Fecha de Nacimiento: {{ profile.birthDate }}</h5>
-      </ion-card-content>
-    </ion-card>
-  </div>
+        <ion-card-content>
+          <h5>Nombre: {{ profile.name }}</h5>
+          <hr />
+          <h5>Apellido: {{ profile.lastName }}</h5>
+          <hr />
+          <h5>Fecha de Nacimiento: {{ profile.birthDate }}</h5>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script lang="ts" setup>
 import {
+  IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
-  IonHeader,
-  IonButton,
   IonContent,
+  IonHeader,
   IonMenuButton,
-  IonButtons,
   IonPage,
   IonTitle,
   IonToolbar,
-  IonLabel,
-  IonInput,
-  IonItem,
-  IonList,
-  IonSelect,
-  IonSelectOption,
 } from "@ionic/vue";
-
-import { defineComponent } from "vue";
 
 const profile = {
   name: "Diego",
