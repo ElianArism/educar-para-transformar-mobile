@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>Perfil</ion-title>
+        <ion-title color="secondary">Perfil</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="contenedor">
@@ -16,15 +16,15 @@
         />
         <ion-card-header>
           <ion-card-title>Perfil</ion-card-title>
-          <ion-card-subtitle>{{ profile.role }}</ion-card-subtitle>
+          <ion-card-subtitle>{{ usuario.role }}</ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
-          <h5>Nombre: {{ profile.name }}</h5>
+          <h5>Nombre: {{ usuario.name }}</h5>
           <hr />
-          <h5>Apellido: {{ profile.lastName }}</h5>
+          <h5>Apellido: {{ usuario.lastName }}</h5>
           <hr />
-          <h5>Fecha de Nacimiento: {{ profile.birthDate }}</h5>
+          <h5>Fecha de Nacimiento: {{ usuario.birthDate }}</h5>
         </ion-card-content>
       </ion-card>
     </ion-content>
@@ -52,7 +52,8 @@ const profile = {
   birthDate: "30/10/1960",
   role: "Profesor",
 };
-console.log(profile);
+const usuario = JSON.parse(localStorage.getItem("usuario") ?? "");
+console.log(usuario);
 </script>
 <style scoped>
 .contenedor {

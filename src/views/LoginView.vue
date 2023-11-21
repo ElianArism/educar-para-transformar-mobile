@@ -89,7 +89,7 @@ async function login(event: any) {
       return;
     }
     console.log(respuesta);
-    localStorage.setItem("usuario", JSON.stringify(usuarios.value));
+    localStorage.setItem("usuario", JSON.stringify(respuesta.data));
     router.push({ name: "profile" });
   } catch (error: any) {
     console.log("error", error);

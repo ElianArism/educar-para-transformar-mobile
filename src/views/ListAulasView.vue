@@ -6,7 +6,7 @@ import { IonCol, IonGrid } from '@ionic/vue';
         <ion-buttons slot="start">
           <ion-menu-button color="primary"> </ion-menu-button>
         </ion-buttons>
-        <ion-title>Tablas de Aulas</ion-title>
+        <ion-title color="secondary">Tablas de Aulas</ion-title>
       </ion-toolbar>
     </ion-header>
     <div class="pagina">
@@ -36,16 +36,18 @@ import { IonCol, IonGrid } from '@ionic/vue';
         >
       </ion-select>
       <ion-grid :fixed="true">
-        <h2>Tabla de Aulas</h2>
+        <h2 class="text">Tabla de Aulas</h2>
         <ion-row class="header-list">
-          <ion-col size="4">Aula</ion-col>
-          <ion-col size="4">Materia</ion-col>
-          <ion-col size="4">Horario</ion-col>
+          <ion-col size="3">Aula</ion-col>
+          <ion-col size="3">Materia</ion-col>
+          <ion-col size="6">Horario</ion-col>
         </ion-row>
-        <ion-row v-for="clase in clases">
-          <ion-col size="4">{{ clase.nameClase }}</ion-col>
-          <ion-col size="4">{{ clase.nameMateria }}</ion-col>
-          <ion-col size="4">{{ clase.horario }}</ion-col>
+        <ion-row v-for="c in classroomList">
+          <ion-col size="3">{{ c.name }}</ion-col>
+          <ion-col size="3">{{ c.day }}</ion-col>
+          <ion-col size="6"
+            >Desde {{ c.startTime }} hasta {{ c.endTime }}</ion-col
+          >
         </ion-row>
       </ion-grid>
     </div>
@@ -72,23 +74,17 @@ import {
   IonGrid,
   IonRow,
 } from "@ionic/vue";
-const clases = [
-  {
-    nameClase: "A.5",
-    nameMateria: "Fisica",
-    horario: "12:45 a 14",
-  },
-  {
-    nameClase: "A.5",
-    nameMateria: "Matematica",
-    horario: "14:30 a 16",
-  },
-  {
-    nameClase: "A.4",
-    nameMateria: "Programacion I",
-    horario: "12:45 a 14",
-  },
-];
+
+import { onMounted, ref } from "vue";
+import { SistemaDeGestionService } from "../services/sistema-de-gestion";
+
+const classroomList = ref<any>([]);
+const { getClassrooms } = SistemaDeGestionService(43222224);
+
+onMounted(async () => {
+  const { data } = await getClassrooms();
+  classroomList.value = data;
+});
 </script>
 
 <style scoped>
@@ -96,7 +92,7 @@ const clases = [
   padding: 10px;
 }
 ion-col {
-  background-color: #0f53b8;
+  background-color: var(--ion-color-primary);
   border: solid 1px #fff;
   color: #fff;
   text-align: center;
@@ -115,7 +111,7 @@ ion-select {
   margin-top: 30px;
 }
 .select-materia {
-  background-color: #0f53b8;
+  background-color: var(--ion-item-background);
 }
 .botton-asignar {
   width: 80px;
