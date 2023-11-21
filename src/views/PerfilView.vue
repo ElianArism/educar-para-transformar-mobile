@@ -46,7 +46,6 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/vue";
-
 const profile = {
   name: "Diego",
   lastName: "Maradona",

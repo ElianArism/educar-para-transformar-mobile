@@ -25,7 +25,7 @@
                 ></ion-icon>
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item @click="cerrarSesion">
                 <ion-icon
                   aria-hidden="true"
                   slot="start"
@@ -100,6 +100,13 @@ const appPages = [
 const changeView = (i: number) => {
   selectedIndex.value = i;
   router.push(appPages[i].url);
+};
+
+const cerrarSesion = () => {
+  localStorage.clear();
+  router.push({
+    name: "login",
+  });
 };
 </script>
 
