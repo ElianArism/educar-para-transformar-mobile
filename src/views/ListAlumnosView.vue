@@ -34,7 +34,7 @@
           <ion-col size="3">Apellido</ion-col>
           <ion-col size="3">Nombre</ion-col>
           <ion-col size="3">Dni</ion-col>
-          <ion-col size="3">Asignar a Aula</ion-col>
+          <ion-col size="3">Asignar Aula</ion-col>
         </ion-row>
         <ion-row v-for="s in alumnos">
           <ion-col size="3">{{ s.studentDNI }}</ion-col>
@@ -42,7 +42,7 @@
           <ion-col size="3">{{ s.studentLastName }}</ion-col>
           <ion-col size="3"
             ><RouterLink to="/asignacion"
-              ><ion-button color="secondary"
+              ><ion-button color="secondary" class="botton-asignar"
                 >Asignar</ion-button
               ></RouterLink
             >
@@ -136,7 +136,16 @@ ion-select {
 .select-materia {
   background-color: var(--ion-item-background);
 }
-.botton-asignar {
-  width: 80px;
+
+@media only screen and (max-width: 420px) {
+  .pagina {
+    padding: 20px;
+  }
+  .botton-asignar {
+    width: 75px;
+  }
+  .select-materia {
+    padding: 5px;
+  }
 }
 </style>
