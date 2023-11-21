@@ -1,3 +1,4 @@
+import { IonCol, IonGrid } from '@ionic/vue';
 <template>
   <ion-page>
     <ion-header :translucent="true">
@@ -8,7 +9,7 @@
         <ion-title color="secondary">Tablas de Aulas</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="pagina">
+    <div class="pagina">
       <ion-select
         label="Filtrar por Materia"
         label-placement="floating"
@@ -49,23 +50,29 @@
           >
         </ion-row>
       </ion-grid>
-    </ion-content>
+    </div>
   </ion-page>
 </template>
 <script lang="ts" setup>
 import {
-  IonButtons,
-  IonCol,
+  IonButton,
+  IonSearchbar,
   IonContent,
-  IonGrid,
   IonHeader,
   IonMenuButton,
+  IonButtons,
   IonPage,
-  IonRow,
-  IonSelect,
-  IonSelectOption,
   IonTitle,
   IonToolbar,
+  IonLabel,
+  IonInput,
+  IonItem,
+  IonList,
+  IonSelect,
+  IonSelectOption,
+  IonCol,
+  IonGrid,
+  IonRow,
 } from "@ionic/vue";
 
 import { onMounted, ref } from "vue";

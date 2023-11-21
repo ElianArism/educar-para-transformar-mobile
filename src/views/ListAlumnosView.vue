@@ -88,6 +88,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/vue";
+
 import { RouterLink } from "vue-router";
 
 import { onMounted, ref } from "vue";
@@ -157,7 +158,16 @@ ion-select {
 .select-materia {
   background-color: var(--ion-item-background);
 }
-.botton-asignar {
-  width: 80px;
+
+@media only screen and (max-width: 420px) {
+  .pagina {
+    padding: 20px;
+  }
+  .botton-asignar {
+    width: 75px;
+  }
+  .select-materia {
+    padding: 5px;
+  }
 }
 </style>
