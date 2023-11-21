@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>Asignaciones</ion-title>
+        <ion-title color="secondary">Asignaciones</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="contenedor">
@@ -44,7 +44,7 @@
         >
       </ion-select>
       <br />
-      <ion-button>Confirmar</ion-button>
+      <ion-button color="secondary">Confirmar</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -87,6 +87,6 @@ const aulas = [
   text-align: center;
 }
 ion-select {
-  background-color: #0f53b8;
+  background-color: var(--ion-item-background);
 }
 </style>

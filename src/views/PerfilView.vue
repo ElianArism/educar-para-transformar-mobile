@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>Perfil</ion-title>
+        <ion-title color="secondary">Perfil</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="contenedor">
