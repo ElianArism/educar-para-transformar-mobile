@@ -8,7 +8,7 @@
             type="text"
             required
             v-model="usuarios.dni"
-            class="input-login"
+            class="input-login font-size"
           ></ion-input>
           <br />
           <ion-label>Contraseña</ion-label>
