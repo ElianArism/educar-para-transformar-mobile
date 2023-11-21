@@ -9,9 +9,9 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding contenedor">
-      <h3>Dni del alumno: {{ studentDNI }}</h3>
+      <h3 class="font-size">Dni del alumno: {{ studentDNI }}</h3>
       <br />
-      <h3>Materias</h3>
+      <h3 class="font-size">Materias</h3>
       <ion-select
         v-model="selectedSubject"
         label="Elija materia"
@@ -26,7 +26,7 @@
           {{ subject.name }}
         </ion-select-option>
       </ion-select>
-      <h3>Horarios</h3>
+      <h3 class="font-size">Horarios</h3>
       <ion-select
         v-model="selectedSchedule"
         label="Elija horario"
@@ -42,7 +42,9 @@
         </ion-select-option>
       </ion-select>
       <br />
-      <ion-button @click="confirmAssignment">Confirmar</ion-button>
+      <ion-button @click="confirmAssignment" class="font-size"
+        >Confirmar</ion-button
+      >
     </ion-content>
   </ion-page>
 </template>
@@ -73,7 +75,7 @@ interface Schedule {
 const fetchSubjects = async () => {
   try {
     const response = await fetch(
-      "https://backendmobile1-eg103nk5.b4a.run/api/subjects"
+      "https://backendmobile1-eg103nk5.b4a.run/api/subject/"
     );
     const data = await response.json();
     subjects.value = data;
@@ -85,7 +87,7 @@ const fetchSubjects = async () => {
 const fetchSchedules = async () => {
   try {
     const response = await fetch(
-      "https://backendmobile1-eg103nk5.b4a.run/api/schedules"
+      "https://backendmobile1-eg103nk5.b4a.run/api/scheduler/"
     );
     const data = await response.json();
     schedules.value = data;
@@ -101,7 +103,7 @@ const getFormattedSchedule = (schedule: Schedule) => {
 const confirmAssignment = async () => {
   try {
     const response = await fetch(
-      "https://backendmobile1-eg103nk5.b4a.run/api/assignments",
+      "https://backendmobile1-eg103nk5.b4a.run/api/assignments/",
       {
         method: "POST",
         headers: {
