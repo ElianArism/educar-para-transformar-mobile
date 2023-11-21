@@ -8,43 +8,39 @@
         <ion-title color="secondary">Asignaciones</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="contenedor">
-      <h3>Dni del alumno: dni alumno</h3>
-      <br />
-      <h3>Materias</h3>
-      <ion-select
-        label="Elija materia"
-        label-placement="floating"
-        fill="outline"
-      >
-        <ion-select-option value="Matematicas"
-          >Matematicas</ion-select-option
+    <ion-content>
+      <div class="contenedor">
+        <h3>Dni del alumno: {{ studentDni }}</h3>
+        <br />
+        <h3>Materia</h3>
+        {{ subjectName }}
+        <h3>Aulas / Horarios</h3>
+        <ion-select
+          label="Elija Horario"
+          label-placement="floating"
+          @ion-change="onSelectedClassroom($event)"
+          fill="outline"
         >
-        <ion-select-option value="Fisica I"
-          >Fisica I</ion-select-option
+          <ion-select-option
+            v-for="(c, clIndx) in classrooms"
+            :value="clIndx"
+            :key="'t' + clIndx"
+          >
+            {{ c.name }} - {{ c.startTime }}/{{ c.endTime }}
+          </ion-select-option>
+        </ion-select>
+        <br />
+        <ion-button
+          v-if="!toggle"
+          @click="assignScheduler()"
+          color="secondary"
+          >Confirmar</ion-button
         >
-        <ion-select-option value="Programacion I"
-          >Programacion I</ion-select-option
-        >
-      </ion-select>
-      <h3>Horarios</h3>
-      <ion-select
-        label="Elija Horario"
-        label-placement="floating"
-        fill="outline"
-      >
-        <ion-select-option value="Lunes 12:45 a 14:00"
-          >Lunes 12:45 a 14:00</ion-select-option
-        >
-        <ion-select-option value="Martes 12:50 a 14:30"
-          >Martes 12:50 a 14:30</ion-select-option
-        >
-        <ion-select-option value="Miercoles 14:00 a 16:00"
-          >Miercoles 14:00 a 16:00</ion-select-option
-        >
-      </ion-select>
-      <br />
-      <ion-button color="secondary">Confirmar</ion-button>
+
+        <RouterLink v-if="toggle" to="/listAlumnos">
+          Volver
+        </RouterLink>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -62,24 +58,54 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/vue";
-const aulas = [
-  {
-    nameAula: "A.4",
-    horariosEntrada: "12:45",
-    horariosSalida: "14:00",
-  },
-  {
-    nameAula: "A.4",
-    horariosEntrada: "14:30",
-    horariosSalida: "16:00",
-  },
-  {
-    nameAula: "A.6",
-    horariosEntrada: "14:30",
-    horariosSalida: "16:00",
-  },
-];
+
+import { onMounted, ref, toRaw } from "vue";
+import { RouterLink, useRoute } from "vue-router";
+import { getStudentsByProfessorDNI } from "../db/students";
+import { SistemaDeGestionService } from "../services/sistema-de-gestion";
+const toggle = ref(false);
+const studentDni = useRoute().params.dni;
+const subjectName = useRoute().params.subject;
+
+const selectedClassroom = ref<any>();
+
+const user = JSON.parse(localStorage.getItem("usuario") ?? "");
+const classroomsBckp = ref<any>([]);
+const classrooms = ref<any>([]);
+
+const { getClassrooms } = SistemaDeGestionService(user.dni);
+
+const onSelectedClassroom = (e: any) => {
+  selectedClassroom.value = e.detail.value;
+};
+
+const assignScheduler = () => {
+  getStudentsByProfessorDNI[user.dni] = getStudentsByProfessorDNI[
+    user.dni
+  ].map((s: any) => {
+    if (s.studentDNI === Number(studentDni)) {
+      const obj = toRaw(classrooms.value[selectedClassroom.value]);
+      return {
+        ...s,
+        schedulerDay: obj.day,
+        schedulerEndTime: obj.endTime,
+        schedulerStartTime: obj.startTime,
+        classroomName: obj.name,
+      };
+    }
+    return s;
+  });
+  toggle.value = true;
+};
+
+onMounted(async () => {
+  const { data: classroomList } = await getClassrooms();
+
+  classroomsBckp.value = classroomList;
+  classrooms.value = classroomList;
+});
 </script>
+
 <style scoped>
 .contenedor {
   padding: 10px;

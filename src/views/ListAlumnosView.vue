@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"> </ion-menu-button>
         </ion-buttons>
-        <ion-title color="secondary">Tablas de Alumnos</ion-title>
+        <ion-title color="tertiary">Tablas de Alumnos</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="pagina">
@@ -34,17 +34,37 @@
           <ion-col size="3">Apellido</ion-col>
           <ion-col size="3">Nombre</ion-col>
           <ion-col size="3">Dni</ion-col>
-          <ion-col size="3">Asignar a Aula</ion-col>
+          <ion-col size="3">Aula</ion-col>
         </ion-row>
         <ion-row v-for="s in alumnos">
           <ion-col size="3">{{ s.studentDNI }}</ion-col>
           <ion-col size="3">{{ s.studentName }}</ion-col>
           <ion-col size="3">{{ s.studentLastName }}</ion-col>
-          <ion-col size="3"
-            ><RouterLink to="/asignacion"
-              ><ion-button color="secondary"
+          <ion-col size="3">
+            <RouterLink
+              v-if="!s.classroomName && selectedSubject"
+              :to="
+                '/asignacion/' +
+                s.studentDNI +
+                '/' +
+                subjects[selectedSubject - 1].name
+              "
+              ><ion-button color="tertiary"
                 >Asignar</ion-button
               ></RouterLink
+            >
+
+            <span
+              v-if="!selectedSubject && !s.classroomName"
+              color="tertiary"
+            >
+              -
+            </span>
+
+            <span class="font-size" v-if="s.classroomName">
+              {{ s.schedulerDay }} - {{ s.schedulerStartTime }}/{{
+                s.schedulerEndTime
+              }}</span
             >
           </ion-col>
         </ion-row>
@@ -73,35 +93,37 @@ import { RouterLink } from "vue-router";
 import { onMounted, ref } from "vue";
 import { SistemaDeGestionService } from "../services/sistema-de-gestion";
 
-const selectedSubject = ref<{ subjectCode: number; name: string }>();
-
+const selectedSubject = ref<any>(undefined);
 const alumnosBckp = ref<any>([]);
 const alumnos = ref<any>([]);
 
 const subjectsBckp = ref<any>([]);
 const subjects = ref<any>([]);
-
-const { getStudents, getSubjects } =
-  SistemaDeGestionService(43222224);
+const user = JSON.parse(localStorage.getItem("usuario") ?? "");
+const { getStudents, getSubjects } = SistemaDeGestionService(
+  user.dni
+);
 
 const filterStudentsBySubject = (subjectCode: number | "todos") => {
   if (subjectCode === "todos") {
+    selectedSubject.value = undefined;
     alumnos.value = alumnosBckp.value;
     return;
   }
+  selectedSubject.value = subjectCode;
   alumnos.value = alumnosBckp.value.filter(
     (s: any) => s.subjectCode === subjectCode
   );
 };
-
 onMounted(async () => {
-  const { data } = await getStudents();
-  const { data: subjectsList } = await getSubjects();
+  const students = await getStudents();
+  const subjectsList = await getSubjects();
 
-  alumnosBckp.value = data;
-  subjects.value = subjectsList;
-  subjectsBckp.value = subjectsList;
-  selectedSubject.value = subjectsList[0];
+  alumnosBckp.value = (students as any)[user.dni];
+  alumnos.value = (students as any)[user.dni];
+  subjects.value = (subjectsList as any)[user.dni];
+  subjectsBckp.value = (subjectsList as any)[user.dni];
+  selectedSubject.value = (subjectsList as any)[0];
 
   filterStudentsBySubject("todos");
 });

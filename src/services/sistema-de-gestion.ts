@@ -1,3 +1,6 @@
+import { getStudentsByProfessorDNI } from "@/db/students";
+import { subjectsByProfessor } from "@/db/subjects";
+
 export const SistemaDeGestionService = (professorDNI: number) => {
   const url: string = "https://backendmobile1-eg103nk5.b4a.run/api";
 
@@ -9,7 +12,7 @@ export const SistemaDeGestionService = (professorDNI: number) => {
       const result = await fetch(`${url}/student/${professorDNI}`);
       const response = await result.json();
       console.log(response);
-      return response;
+      return getStudentsByProfessorDNI;
     } catch (error) {
       console.log(error);
     }
@@ -20,7 +23,7 @@ export const SistemaDeGestionService = (professorDNI: number) => {
       const result = await fetch(`${url}/subject/${professorDNI}`);
       const response = await result.json();
       console.log(response);
-      return response;
+      return subjectsByProfessor;
     } catch (error) {
       console.log(error);
     }
