@@ -11,7 +11,7 @@ export const loginService = async (dni: number, password: string) => {
       }
     );
     const response = await result.json();
-    console.log(response);
+
     return response;
   } catch (error) {
     console.log(error);

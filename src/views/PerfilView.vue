@@ -48,14 +48,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/vue";
-const profile = {
-  name: "Diego",
-  lastName: "Maradona",
-  birthDate: "30/10/1960",
-  role: "Profesor",
-};
 const usuario = JSON.parse(localStorage.getItem("usuario") ?? "");
-console.log(usuario);
 </script>
 <style scoped>
 .contenedor {

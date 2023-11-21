@@ -85,9 +85,13 @@ const onChangeFontSize = (e: any) => {
       break;
   }
 
-  getComputedStyle(
-    document.querySelector(":root") as any
-  ).setProperty("--font-size", fontSize.value);
+  try {
+    getComputedStyle(
+      document.querySelector(":root") as any
+    ).setProperty("--font-size", fontSize.value);
+  } catch (error) {
+    console.log(error);
+  }
 };
 </script>
 
@@ -98,9 +102,5 @@ const onChangeFontSize = (e: any) => {
 
 ion-select {
   background-color: var(--ion-item-background);
-}
-
-.font-size {
-  font-size: var(--font-size);
 }
 </style>

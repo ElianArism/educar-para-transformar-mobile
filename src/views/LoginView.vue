@@ -57,10 +57,9 @@ import {
   IonSelectOption,
   alertController,
 } from "@ionic/vue";
-import { Method } from "ionicons/dist/types/stencil-public-runtime";
 import { ref } from "vue";
-import { loginService } from "../services/auth";
 import { useRouter } from "vue-router";
+import { loginService } from "../services/auth";
 const router = useRouter();
 async function login(event: any) {
   event.preventDefault();
@@ -83,12 +82,10 @@ async function login(event: any) {
       usuarios.value.password
     );
     if (respuesta.ok == false) {
-      console.log(respuesta.error.messege);
       alert.message = `Error en ingresar datos ${respuesta.error.message}`;
       await alert.present();
       return;
     }
-    console.log(respuesta);
     localStorage.setItem("usuario", JSON.stringify(respuesta.data));
     router.push({ name: "profile" });
   } catch (error: any) {

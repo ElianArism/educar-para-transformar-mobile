@@ -244,6 +244,6 @@ ion-item.selected {
 }
 
 .font-size {
-  font-size: var(--font-size);
+  font-size: var(--font-size) !important;
 }
 </style>

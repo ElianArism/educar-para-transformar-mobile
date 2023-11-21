@@ -11,7 +11,6 @@ export const SistemaDeGestionService = (professorDNI: number) => {
     try {
       const result = await fetch(`${url}/student/${professorDNI}`);
       const response = await result.json();
-      console.log(response);
       return getStudentsByProfessorDNI;
     } catch (error) {
       console.log(error);
@@ -22,7 +21,6 @@ export const SistemaDeGestionService = (professorDNI: number) => {
     try {
       const result = await fetch(`${url}/subject/${professorDNI}`);
       const response = await result.json();
-      console.log(response);
       return subjectsByProfessor;
     } catch (error) {
       console.log(error);
@@ -33,7 +31,7 @@ export const SistemaDeGestionService = (professorDNI: number) => {
     try {
       const result = await fetch(`${url}/classroom/`);
       const response = await result.json();
-      console.log(response);
+
       return response;
     } catch (error) {
       console.log(error);
