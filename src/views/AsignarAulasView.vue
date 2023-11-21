@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>Asignaciones</ion-title>
+        <ion-title color="secondary">Asignaciones</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding contenedor">
@@ -42,7 +42,11 @@
         </ion-select-option>
       </ion-select>
       <br />
+<<<<<<< HEAD
       <ion-button @click="confirmAssignment">Confirmar</ion-button>
+=======
+      <ion-button color="secondary">Confirmar</ion-button>
+>>>>>>> cdb37a1a9fe70da706e391e2867f1aedad65c715
     </ion-content>
   </ion-page>
 </template>
@@ -146,6 +150,6 @@ onMounted(() => {
   text-align: center;
 }
 ion-select {
-  background-color: #0f53b8;
+  background-color: var(--ion-item-background);
 }
 </style>

@@ -25,7 +25,7 @@
                 ></ion-icon>
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item @click="cerrarSesion">
                 <ion-icon
                   aria-hidden="true"
                   slot="start"
@@ -64,7 +64,7 @@ import {
   personCircleOutline,
   readerOutline,
 } from "ionicons/icons";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -101,9 +101,21 @@ const changeView = (i: number) => {
   selectedIndex.value = i;
   router.push(appPages[i].url);
 };
+const cerrarSesion = () => {
+  localStorage.clear();
+  router.push({
+    name: "login",
+  });
+};
+onMounted(() => {
+  document.body.setAttribute(
+    "color-theme",
+    localStorage.getItem("theme") ?? ""
+  );
+});
 </script>
 
-<style scoped>
+<style>
 ion-menu ion-content {
   --background: var(
     --ion-item-background,
@@ -163,11 +175,11 @@ ion-menu.md ion-item.selected {
 }
 
 ion-menu.md ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+  color: var(--ion-color-secondary);
 }
 
 ion-menu.md ion-item ion-icon {
-  color: #616e7e;
+  color: var(--ion-color-secondary);
 }
 
 ion-menu.md ion-item ion-label {
@@ -194,7 +206,7 @@ ion-menu.ios ion-item {
 }
 
 ion-menu.ios ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+  color: var(--ion-color-secondary);
 }
 
 ion-menu.ios ion-item ion-icon {
@@ -224,6 +236,10 @@ ion-note {
 }
 
 ion-item.selected {
-  --color: var(--ion-color-primary);
+  --color: var(--ion-color-secondary);
+}
+
+.text {
+  color: var(--ion-color-secondary);
 }
 </style>
