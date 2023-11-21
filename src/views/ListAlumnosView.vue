@@ -61,7 +61,7 @@
               -
             </span>
 
-            <span class="font-size" v-if="s.classroomName">
+            <span v-if="s.classroomName">
               {{ s.schedulerDay }} - {{ s.schedulerStartTime }}/{{
                 s.schedulerEndTime
               }}</span

@@ -18,7 +18,7 @@
 
       <div id="container">
         <strong class="capitalize">{{ $route.params.id }}</strong>
-        <p class="font-size">
+        <p>
           Explore
           <a
             target="_blank"

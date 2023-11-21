@@ -11,7 +11,7 @@
     <ion-content>
       <div class="pagina">
         <ion-grid :fixed="true">
-          <h2 class="text font-size">Tabla de Aulas</h2>
+          <h2 class="text">Tabla de Aulas</h2>
           <ion-row class="header-list">
             <ion-col size="3">Aula</ion-col>
             <ion-col size="3">Materia</ion-col>

@@ -20,13 +20,11 @@
         </ion-card-header>
 
         <ion-card-content>
-          <h5 class="font-size">Nombre: {{ usuario.name }}</h5>
+          <h5>Nombre: {{ usuario.name }}</h5>
           <hr />
-          <h5 class="font-size">Apellido: {{ usuario.lastName }}</h5>
+          <h5>Apellido: {{ usuario.lastName }}</h5>
           <hr />
-          <h5 class="font-size">
-            Fecha de Nacimiento: {{ usuario.birthDate }}
-          </h5>
+          <h5>Fecha de Nacimiento: {{ usuario.birthDate }}</h5>
         </ion-card-content>
       </ion-card>
     </ion-content>

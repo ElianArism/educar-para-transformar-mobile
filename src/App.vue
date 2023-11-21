@@ -242,8 +242,4 @@ ion-item.selected {
 .text {
   color: var(--ion-color-secondary);
 }
-
-.font-size {
-  font-size: var(--font-size) !important;
-}
 </style>
