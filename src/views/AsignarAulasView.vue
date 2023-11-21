@@ -72,7 +72,9 @@ interface Schedule {
 
 const fetchSubjects = async () => {
   try {
-    const response = await fetch("url de la api/subjects");
+    const response = await fetch(
+      "https://backendmobile1-eg103nk5.b4a.run/api/subjects"
+    );
     const data = await response.json();
     subjects.value = data;
   } catch (error) {
@@ -82,7 +84,9 @@ const fetchSubjects = async () => {
 
 const fetchSchedules = async () => {
   try {
-    const response = await fetch("url de la api/schedules");
+    const response = await fetch(
+      "https://backendmobile1-eg103nk5.b4a.run/api/schedules"
+    );
     const data = await response.json();
     schedules.value = data;
   } catch (error) {
@@ -96,22 +100,26 @@ const getFormattedSchedule = (schedule: Schedule) => {
 
 const confirmAssignment = async () => {
   try {
-    const response = await fetch("url de la api/assignments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        studentDNI: studentDNI.value,
-        subjectCode: subjects.value.find(
-          (subject) => subject.name === selectedSubject.value
-        )?.subjectCode,
-        classroomsCode: schedules.value.find(
-          (schedule) =>
-            getFormattedSchedule(schedule) === selectedSchedule.value
-        )?.classroomsCode,
-      }),
-    });
+    const response = await fetch(
+      "https://backendmobile1-eg103nk5.b4a.run/api/assignments",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          studentDNI: studentDNI.value,
+          subjectCode: subjects.value.find(
+            (subject) => subject.name === selectedSubject.value
+          )?.subjectCode,
+          classroomsCode: schedules.value.find(
+            (schedule) =>
+              getFormattedSchedule(schedule) ===
+              selectedSchedule.value
+          )?.classroomsCode,
+        }),
+      }
+    );
 
     const data = await response.json();
 
