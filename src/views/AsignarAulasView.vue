@@ -42,11 +42,7 @@
         </ion-select-option>
       </ion-select>
       <br />
-<<<<<<< HEAD
       <ion-button @click="confirmAssignment">Confirmar</ion-button>
-=======
-      <ion-button color="secondary">Confirmar</ion-button>
->>>>>>> cdb37a1a9fe70da706e391e2867f1aedad65c715
     </ion-content>
   </ion-page>
 </template>
